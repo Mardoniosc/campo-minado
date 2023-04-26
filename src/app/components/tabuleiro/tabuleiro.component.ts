@@ -12,7 +12,7 @@ export class TabuleiroComponent implements OnInit {
   private tamanhoTabuleiro = 8;
   private qtdMinas: number = 10; // quantidade de minas no tabuleiro
 
-  constructor(private jogoService: JogoService) { }
+  constructor(private jogoService: JogoService) {}
 
   ngOnInit(): void {
     this.inicializarTabuleiro();
@@ -80,12 +80,11 @@ export class TabuleiroComponent implements OnInit {
       if (celula.temMina) {
         this.revelarTodasCelulas();
         this.jogadorPerdeu();
-
       } else {
         this.revelarCelulaERecursivas(celula);
-      if (this.verificarVitoria()) {
-        this.jogadorVenceu();
-      }
+        if (this.verificarVitoria()) {
+          this.jogadorVenceu();
+        }
       }
     }
   }
@@ -134,7 +133,9 @@ export class TabuleiroComponent implements OnInit {
       }
     }
 
-    return celulasComMinasNaoMarcadas === 0 && celulasSemMinasNaoReveladas === 0;
+    return (
+      celulasComMinasNaoMarcadas === 0 && celulasSemMinasNaoReveladas === 0
+    );
   }
 
   marcarCelula(celula: Celula): void {

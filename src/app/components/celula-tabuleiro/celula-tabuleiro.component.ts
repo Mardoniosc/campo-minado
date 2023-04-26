@@ -4,7 +4,7 @@ import { Celula } from 'src/app/models/interfaces.mode';
 @Component({
   selector: 'app-celula-tabuleiro',
   templateUrl: './celula-tabuleiro.component.html',
-  styleUrls: ['./celula-tabuleiro.component.scss']
+  styleUrls: ['./celula-tabuleiro.component.scss'],
 })
 export class CelulaTabuleiroComponent {
   @Input() celula!: Celula;
@@ -31,7 +31,8 @@ export class CelulaTabuleiroComponent {
       marcada: this.celula.marcada,
       revelada: this.celula.revelada,
       mina: this.celula.temMina,
-      [`adj-${this.celula.minasAdjacentes}`]: !this.celula.temMina && this.celula.minasAdjacentes > 0
+      [`adj-${this.celula.minasAdjacentes}`]:
+        !this.celula.temMina && this.celula.minasAdjacentes > 0,
     };
   }
 }

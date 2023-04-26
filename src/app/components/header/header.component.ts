@@ -1,24 +1,25 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Celula } from 'src/app/models/interfaces.mode';
-import { TabuleiroComponent } from '../tabuleiro/tabuleiro.component';
+import { Component, OnInit } from '@angular/core';
 import { JogoService } from 'src/app/services/jogo.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
   jogoEmAndamento!: boolean;
   jogadorVenceu!: boolean;
   mensagemStatus!: string;
 
-  constructor(private jogoService: JogoService) { }
+  constructor(private jogoService: JogoService) {}
 
   ngOnInit(): void {
     this.inicializarJogo();
-    this.jogoService.mensagemStatus.subscribe(status => {
+    this.jogoService.mensagemStatus.subscribe((status) => {
       this.mensagemStatus = status;
+      if (status !== 'Jogo em andamento') {
+        this.jogoEmAndamento = false;
+      }
     });
   }
 

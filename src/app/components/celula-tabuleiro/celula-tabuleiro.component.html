@@ -1,9 +1,5 @@
-<div class="celula"
-     [ngClass]="getCssClasses()"
-     (click)="onClick()"
-     (contextmenu)="onRightClick($event)">
-  <span *ngIf="celula.revelada && !celula.temMina">{{celula.minasAdjacentes}}</span>
+<div class="celula" [ngClass]="getCssClasses()" (click)="onClick()" (contextmenu)="onRightClick($event)">
+  <span *ngIf="celula.revelada && !celula.temMina">{{celula.minasAdjacentes === 0 ? '' : celula.minasAdjacentes}}</span>
   <span *ngIf="celula.revelada && celula.temMina">{{ celula.revelada ? '💣' : '' }}</span>
   <span *ngIf="!celula.revelada && celula.marcada"></span>
 </div>
-

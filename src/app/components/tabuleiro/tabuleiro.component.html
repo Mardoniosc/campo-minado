@@ -1,11 +1,7 @@
 <app-header></app-header>
 <div class="tabuleiro">
   <div class="linha" *ngFor="let linha of celulas">
-    <app-celula-tabuleiro
-      *ngFor="let celula of linha"
-      [celula]="celula"
-      (revelar)="revelarCelula($event)"
-      (marcar)="marcarCelula($event)"
-    ></app-celula-tabuleiro>
+    <app-celula-tabuleiro *ngFor="let celula of linha" [celula]="celula" (revelar)="revelarCelula($event)"
+      (marcar)="marcarCelula($event)"></app-celula-tabuleiro>
   </div>
 </div>
