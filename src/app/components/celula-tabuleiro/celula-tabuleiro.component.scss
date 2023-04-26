@@ -63,7 +63,7 @@
 }
 
 .celula.marcada::before {
-  content: '💣';
+  content: '🚩';
   position: absolute;
   color: black;
   font-size: 14px;
@@ -75,3 +75,4 @@ span {
   display: inline-block;
   line-height: 1;
 }
+
