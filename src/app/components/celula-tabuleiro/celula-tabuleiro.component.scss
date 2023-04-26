@@ -1,7 +1,7 @@
 .celula {
-  width: 30px;
-  height: 30px;
-  margin-bottom: 10px;
+  width: 35px;
+  height: 35px;
+  margin: 6px;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -13,6 +13,9 @@
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 6px;
 }
 
 .celula.revelada {
@@ -61,12 +64,14 @@
 
 .celula.marcada::before {
   content: '💣';
+  position: absolute;
   color: black;
   font-size: 14px;
   font-weight: bold;
 }
 
 span {
+  position: absolute;
   display: inline-block;
   line-height: 1;
 }
