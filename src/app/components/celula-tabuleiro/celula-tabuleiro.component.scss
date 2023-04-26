@@ -1,6 +1,7 @@
 .celula {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
+  margin-bottom: 10px;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -59,7 +60,7 @@
 }
 
 .celula.marcada::before {
-  content: '\\2691';
+  content: '💣';
   color: black;
   font-size: 14px;
   font-weight: bold;

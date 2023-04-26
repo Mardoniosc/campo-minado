@@ -3,7 +3,7 @@
      (click)="onClick()"
      (contextmenu)="onRightClick($event)">
   <span *ngIf="celula.revelada && !celula.temMina">{{celula.minasAdjacentes}}</span>
-  <span *ngIf="celula.revelada && celula.temMina">&#x1F4A3;</span>
-  <span *ngIf="!celula.revelada && celula.marcada">&#x2691;</span>
+  <span *ngIf="celula.revelada && celula.temMina">{{ celula.revelada ? '💣' : '' }}</span>
+  <span *ngIf="!celula.revelada && celula.marcada"></span>
 </div>
 

@@ -44,6 +44,7 @@ export class TabuleiroComponent implements OnInit {
       const coluna = Math.floor(Math.random() * 8);
       if (!this.celulas[linha][coluna].temMina) {
         this.celulas[linha][coluna].temMina = true;
+
         minasAdicionadas++;
       }
     }
@@ -136,7 +137,12 @@ export class TabuleiroComponent implements OnInit {
   }
 
   marcarCelula(celula: Celula): void {
-    celula.marcada = !celula.marcada;
+    console.log(celula)
+    if (!this.jogoService.jogoEmAndamento || celula.revelada) {
+      return;
+    }
+
+    this.celulas[celula.linha][celula.coluna].marcada = celula.marcada;
   }
 
   private revelarTodasCelulas(): void {
