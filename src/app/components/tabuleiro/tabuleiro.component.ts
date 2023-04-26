@@ -9,6 +9,7 @@ import { JogoService } from 'src/app/services/jogo.service';
 })
 export class TabuleiroComponent implements OnInit {
   celulas!: Celula[][];
+  private tamanhoTabuleiro = 8;
   private qtdMinas: number = 10; // quantidade de minas no tabuleiro
 
   constructor(private jogoService: JogoService) { }
@@ -21,9 +22,9 @@ export class TabuleiroComponent implements OnInit {
 
   private inicializarTabuleiro(): void {
     this.celulas = [];
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < this.tamanhoTabuleiro; i++) {
       const linha: Celula[] = [];
-      for (let j = 0; j < 8; j++) {
+      for (let j = 0; j < this.tamanhoTabuleiro; j++) {
         linha.push({
           linha: i,
           coluna: j,
@@ -40,8 +41,8 @@ export class TabuleiroComponent implements OnInit {
   private adicionarMinas(): void {
     let minasAdicionadas = 0;
     while (minasAdicionadas < this.qtdMinas) {
-      const linha = Math.floor(Math.random() * 8);
-      const coluna = Math.floor(Math.random() * 8);
+      const linha = Math.floor(Math.random() * this.tamanhoTabuleiro);
+      const coluna = Math.floor(Math.random() * this.tamanhoTabuleiro);
       if (!this.celulas[linha][coluna].temMina) {
         this.celulas[linha][coluna].temMina = true;
 
@@ -51,8 +52,8 @@ export class TabuleiroComponent implements OnInit {
   }
 
   private calcularMinasAdjacentes(): void {
-    for (let i = 0; i < 8; i++) {
-      for (let j = 0; j < 8; j++) {
+    for (let i = 0; i < this.tamanhoTabuleiro; i++) {
+      for (let j = 0; j < this.tamanhoTabuleiro; j++) {
         if (!this.celulas[i][j].temMina) {
           let minasAdjacentes = 0;
           for (let k = i - 1; k <= i + 1; k++) {
@@ -60,8 +61,8 @@ export class TabuleiroComponent implements OnInit {
               if (
                 k >= 0 &&
                 l >= 0 &&
-                k < 8 &&
-                l < 8 &&
+                k < this.tamanhoTabuleiro &&
+                l < this.tamanhoTabuleiro &&
                 this.celulas[k][l].temMina
               ) {
                 minasAdjacentes++;
@@ -137,7 +138,6 @@ export class TabuleiroComponent implements OnInit {
   }
 
   marcarCelula(celula: Celula): void {
-    console.log(celula)
     if (!this.jogoService.jogoEmAndamento || celula.revelada) {
       return;
     }
@@ -146,8 +146,8 @@ export class TabuleiroComponent implements OnInit {
   }
 
   private revelarTodasCelulas(): void {
-    for (let i = 0; i < 8; i++) {
-      for (let j = 0; j < 8; j++) {
+    for (let i = 0; i < this.tamanhoTabuleiro; i++) {
+      for (let j = 0; j < this.tamanhoTabuleiro; j++) {
         this.celulas[i][j].revelada = true;
       }
     }
