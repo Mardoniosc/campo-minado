@@ -1,0 +1,71 @@
+.celula {
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ccc;
+  border: 1px solid #999;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+
+.celula.revelada {
+  background-color: #fff;
+}
+
+.celula.revelada.adj-1 {
+  color: blue;
+}
+
+.celula.revelada.adj-2 {
+  color: green;
+}
+
+.celula.revelada.adj-3 {
+  color: red;
+}
+
+.celula.revelada.adj-4 {
+  color: purple;
+}
+
+.celula.revelada.adj-5 {
+  color: maroon;
+}
+
+.celula.revelada.adj-6 {
+  color: turquoise;
+}
+
+.celula.revelada.adj-7 {
+  color: black;
+}
+
+.celula.revelada.adj-8 {
+  color: gray;
+}
+
+.celula.mina.revelada {
+  color: red;
+}
+
+.celula.marcada {
+  background-color: yellow;
+}
+
+.celula.marcada::before {
+  content: '\\2691';
+  color: black;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+span {
+  display: inline-block;
+  line-height: 1;
+}
